@@ -13,6 +13,8 @@ namespace LIS.ServiceContracts.Services
 
         Task<IEnumerable<DepartmentServiceObject>> GetDepartmentsByBranchIdAsync(int branchId, CancellationToken token);
 
+        Task<IEnumerable<DepartmentServiceObject>> GetAll(CancellationToken token);
+
         Task<DepartmentServiceObject> UpdateDepartmentAsync(DepartmentServiceObject departmentServiceObject, CancellationToken token);
 
         Task DeleteDepartmentByIdAsync(int departmentId, CancellationToken token);

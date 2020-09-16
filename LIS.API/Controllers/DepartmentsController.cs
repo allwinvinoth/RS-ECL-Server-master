@@ -11,10 +11,12 @@ using FluentValidation;
 using LIS.Common.Extensions;
 using LIS.ServiceContracts.ServiceObjects;
 using LIS.ServiceContracts.Services;
+using Microsoft.AspNetCore.Cors;
 
 namespace LIS.API.Controllers
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/v1/Departments")]
+    [EnableCors("AllowOrigin")]
     public sealed class DepartmentsController : ApiController
     {
         private readonly IDepartmentService _departmentService;
@@ -46,7 +48,7 @@ namespace LIS.API.Controllers
                 if (!validationResult.IsValid)
                     return new BadRequestObjectResult(validationResult.Errors.ToValidationErrors());
                 var departmentServiceObject = Mapper.Map<DepartmentServiceObject>(createDepartmentRequestDto);
-                departmentServiceObject.BranchId = branchId;
+                departmentServiceObject.BranchId = 1;
                 var serviceResponse = await _departmentService.CreateDepartmentAsync(departmentServiceObject, token);
                 return new CreatedResult(string.Empty, Mapper.Map<CreateDepartmentResponseDto>(serviceResponse));
             }
@@ -56,21 +58,35 @@ namespace LIS.API.Controllers
             }
         }
 
-        [HttpGet]
-        [ProducesResponseType(200, Type = typeof(GetDepartmentResponseDto))]
-        [ProducesResponseType(404)]
-        public async Task<IActionResult> GetDepartmentsByBranchIdAsync(
-            [FromQuery] int branchId,
-            CancellationToken token = default)
+        //[HttpGet(Name ="GetById")]
+        //[ProducesResponseType(200, Type = typeof(GetDepartmentResponseDto))]
+        //[ProducesResponseType(404)]
+        //public async Task<IActionResult> GetDepartmentsByBranchIdAsync(
+        //    [FromQuery] int branchId,
+        //    CancellationToken token = default)
+        //{
+        //    try
+        //    {
+        //        var serviceResponse = await _departmentService.GetDepartmentsByBranchIdAsync(branchId, token);
+        //        return new OkObjectResult(Mapper.Map<IEnumerable<GetDepartmentResponseDto>>(serviceResponse));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return new NotFoundResult(); 
+        //    }
+        //}
+
+        [HttpGet(Name ="GetAll")]
+        public async Task<IActionResult> GetAll(CancellationToken token = default)
         {
             try
             {
-                var serviceResponse = await _departmentService.GetDepartmentsByBranchIdAsync(branchId, token);
+                var serviceResponse = await _departmentService.GetAll(token);
                 return new OkObjectResult(Mapper.Map<IEnumerable<GetDepartmentResponseDto>>(serviceResponse));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return new NotFoundResult(); 
+                return new NotFoundResult();
             }
         }
 

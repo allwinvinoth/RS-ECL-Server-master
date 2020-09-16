@@ -7,6 +7,6 @@ namespace LIS.API.DataTransferObjects.Departments.Request
 {
     public sealed class CreateDepartmentRequestDto
     {
-        public string Name { get; set; }
+        public string departmentName { get; set; }
     }
 }

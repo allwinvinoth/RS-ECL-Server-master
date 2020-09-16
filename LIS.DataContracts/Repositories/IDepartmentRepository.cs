@@ -13,6 +13,8 @@ namespace LIS.DataContracts.Repositories
 
         Task<IEnumerable<DepartmentEntity>> GetDepartmentsByBranchIdAsync(int branchId, CancellationToken token);
 
+        Task<IEnumerable<DepartmentEntity>> GetAll(CancellationToken token);
+
         Task<DepartmentEntity> UpdateDepartmentAsync(DepartmentEntity departmentEntity, CancellationToken token);
 
         Task DeleteDepartmentByIdAsync(int departmentId, CancellationToken token);

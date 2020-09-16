@@ -19,6 +19,7 @@ namespace LIS.Data.Repositories
             _dbContext = dbContext;
         }
 
+
         public async Task<AppointmentEntity> CreateAppointmentAsync(AppointmentEntity appointmentEntity, CancellationToken token)
         {
             await _dbContext.Appointments.AddAsync(appointmentEntity, token);

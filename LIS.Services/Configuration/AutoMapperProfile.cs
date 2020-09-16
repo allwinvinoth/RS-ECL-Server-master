@@ -13,6 +13,7 @@ namespace LIS.Services.Configuration
             this.CreateMapForPages();
             this.CreateMapForTests();
             this.CreateMapForDepartments();
+            this.CreateMapForMethods();
             this.CreateMapForOrganisations();
             this.CreateMapForBranches();
 
@@ -74,6 +75,14 @@ namespace LIS.Services.Configuration
                 .ForMember(departmentEntity => departmentEntity.IsActive, opt => opt.MapFrom(x => true))
                 .ForMember(departmentEntity => departmentEntity.ModifiedOn, opt => opt.MapFrom(x => DateTime.UtcNow));
             this.CreateMap<DepartmentEntity, DepartmentServiceObject>();
+        }
+
+        private void CreateMapForMethods()
+        {
+            this.CreateMap<MethodServiceObject, MethodEntity>()
+                .ForMember(methodEntity => methodEntity.IsActive, opt => opt.MapFrom(x => true))
+                .ForMember(methodEntity => methodEntity.ModifiedOn, opt => opt.MapFrom(x => DateTime.UtcNow));
+            this.CreateMap<MethodEntity, MethodServiceObject>();
         }
 
         private void CreateMapForOrganisations()

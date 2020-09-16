@@ -35,6 +35,10 @@ namespace LIS.Data.Repositories
             return await _dbContext.Departments.Where(department => department.BranchId == branchId && department.IsActive).ToListAsync(token);
         }
 
+        public async Task<IEnumerable<DepartmentEntity>> GetAll(CancellationToken token)
+        {
+            return await _dbContext.Departments.Where(department => department.IsActive).ToListAsync(token);
+        }
         public async Task<DepartmentEntity> UpdateDepartmentAsync(DepartmentEntity departmentEntity, CancellationToken token)
         {
             _dbContext.Departments.Update(departmentEntity);

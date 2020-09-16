@@ -1,11 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <LangVersion>latest</LangVersion>
     <AssemblyName>LIS.API</AssemblyName>
+    <UserSecretsId>b3ef381e-7818-465b-8ddc-1ae72671ee57</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DataTransferObjects\Equipments\Request\UpdateEquipmentRequestDto.cs" />
+    <Compile Remove="DataTransferObjects\Equipments\Response\CreateEquipmentResponseDto.cs" />
+    <Compile Remove="DataTransferObjects\Equipments\Response\UpdateEquipmentResponseDto.cs" />
+  </ItemGroup>
 
   <ItemGroup>
         <PackageReference Include="AutoMapper" Version="9.0.0" />

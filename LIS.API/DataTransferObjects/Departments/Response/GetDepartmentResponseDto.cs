@@ -7,8 +7,8 @@ namespace LIS.API.DataTransferObjects.Departments.Response
 {
     public sealed class GetDepartmentResponseDto
     {
-        public int Id { get; set; }
+        public int id { get; set; }
 
-        public string Name { get; set; }
+        public string departmentName { get; set; }
     }
 }

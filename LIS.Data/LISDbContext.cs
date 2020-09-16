@@ -51,5 +51,13 @@ namespace LIS.Data
         public DbSet<AppointmentEntity> Appointments { get; set; }
 
         public DbSet<AppointmentStatusEntity> AppointmentStatus { get; set; }
+
+        public DbSet<MethodEntity> Methods { get; set; }
+
+        public DbSet<EquipmentEntity> Equipments { get; set; }
+
+        public DbSet<LookupEntity> Lookup { get; set; }
+
+        public DbSet<IndividualTestEntity> IndividualTestMasters { get; set; }
     }
 }

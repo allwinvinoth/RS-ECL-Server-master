@@ -9,6 +9,6 @@ namespace LIS.API.DataTransferObjects.Departments.Response
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string departmentName { get; set; }
     }
 }

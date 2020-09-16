@@ -47,6 +47,7 @@ using LIS.API.DataTransferObjects.Patients.Request;
 using LIS.API.Validators.Patients;
 using LIS.API.DataTransferObjects.Appointments.Request;
 using LIS.API.Validators.Appointments;
+using LIS.API.DataTransferObjects.Methods.Request;
 
 namespace LIS.API.Configuration
 {
@@ -70,6 +71,12 @@ namespace LIS.API.Configuration
 
             serviceCollection.AddScoped<ITestProfilesService, TestProfilesService>();
             serviceCollection.AddScoped<IDepartmentService, DepartmentService>();
+
+            serviceCollection.AddScoped<IEquipmentService, EquipmentService>();
+            serviceCollection.AddScoped<ILookupService, LookupService>();
+            serviceCollection.AddScoped<IIndividualTestMasterService, IndividualTestMasterService>();
+
+            serviceCollection.AddScoped<IMethodService, MethodService>();
 
             serviceCollection.AddScoped<ISampleTypeService, SampleTypeService>();
             serviceCollection.AddScoped<IContainerTypeService, ContainerTypeService>();
@@ -97,6 +104,10 @@ namespace LIS.API.Configuration
             serviceCollection.AddScoped<IBranchRepository, BranchRepository>();
             serviceCollection.AddScoped<ICategoryRepository, CategoryRepository>();
             serviceCollection.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            serviceCollection.AddScoped<IEquipmentRepository, EquipmentRepository>();
+            serviceCollection.AddScoped<IMethodRepository, MethodRepository>();
+            serviceCollection.AddScoped<ILookupRepository, LookupRepository>();
+            serviceCollection.AddScoped<IIndividualTestMasterRepository, IndividualTestMasterRepository>();
             serviceCollection.AddScoped<IGenderRepository, GenderRepository>();
             serviceCollection.AddScoped<ITestProfileRepository, TestProfileRepository>();
             serviceCollection.AddScoped<ISampleTypeRepository, SampleTypeRepository>();
@@ -170,6 +181,9 @@ namespace LIS.API.Configuration
             serviceCollection.AddTransient<IValidator<UpdateTestProfileRequestDto>, UpdateTestProfileRequestDtoValidator>();
             serviceCollection.AddTransient<IValidator<CreateDepartmentRequestDto>, CreateDepartmentRequestDtoValidator>();
             serviceCollection.AddTransient<IValidator<UpdateDepartmentRequestDto>, UpdateDepartmentRequestDtoValidator>();
+
+            //serviceCollection.AddTransient<IValidator<CreateMethodRequestDto>, CreateMethodRequestDtoValidator>();
+            //serviceCollection.AddTransient<IValidator<UpdateMethodRequestDto>, UpdateMethodRequestDtoValidator>();
 
             serviceCollection.AddTransient<IValidator<CreateSampleTypeRequestDto>, CreateSampleTypeRequestDtoValidator>();
             serviceCollection.AddTransient<IValidator<CreateContainerTypeRequestDto>, CreateContainerTypeRequestDtoValidator>();

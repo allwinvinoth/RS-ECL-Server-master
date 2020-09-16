@@ -6,6 +6,6 @@ namespace LIS.ServiceContracts.ServiceObjects
         
         public int BranchId { get; set; }
         
-        public string name { get; set; }
+        public string departmentName { get; set; }
     }
 }

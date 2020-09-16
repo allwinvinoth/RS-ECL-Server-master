@@ -10,6 +10,6 @@ namespace LIS.DataContracts.Entities
 
         [Column("branch_id")]public int BranchId { get; set; }
         
-        [Column("name")]public string Name { get; set; }
+        [Column("name")]public string departmentName { get; set; }
     }
 }

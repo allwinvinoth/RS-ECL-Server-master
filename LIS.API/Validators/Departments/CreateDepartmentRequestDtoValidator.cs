@@ -12,7 +12,7 @@ namespace LIS.API.Validators.Departments
         private const string DepartmentNameShouldNotBeNullOrEmptyError = "DEPARTMENT_NAME_SHOULDNOTBEEMPTY_ERROR";
         public CreateDepartmentRequestDtoValidator()
         {
-            this.RuleFor(department => department.Name)
+            this.RuleFor(department => department.departmentName)
                 .NotNull().WithMessage(DepartmentNameShouldNotBeNullOrEmptyError)
                 .NotEmpty().WithMessage(DepartmentNameShouldNotBeNullOrEmptyError);
         }

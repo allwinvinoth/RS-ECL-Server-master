@@ -37,6 +37,13 @@ using LIS.API.DataTransferObjects.Patients.Request;
 using LIS.API.DataTransferObjects.Patients.Response;
 using LIS.API.DataTransferObjects.Appointments.Request;
 using LIS.API.DataTransferObjects.Appointments.Response;
+using LIS.API.DataTransferObjects.Methods.Response;
+using LIS.API.DataTransferObjects.Methods.Request;
+using LIS.API.DataTransferObjects.Equipments.Request;
+using LIS.API.DataTransferObjects.Equipments.Response;
+using LIS.DataContracts.Entities;
+using LIS.API.DataTransferObjects.Lookup.Response;
+using LIS.API.DataTransferObjects.TestMaster;
 
 namespace LIS.API.Configuration
 {
@@ -55,6 +62,10 @@ namespace LIS.API.Configuration
 
             this.CreateMapForTestProfiles();
             this.CreateMapForDepartments();
+            this.CreateMapForMethods();
+            this.CreateMapForLookup();
+            this.CreateMapForIndividualMaster();
+            this.CreateMapForEquipments();
             this.CreateMapForSampleTypes();
             this.CreateMapForContainerTypes();
             this.CreateMapForSamples();
@@ -159,6 +170,44 @@ namespace LIS.API.Configuration
             this.CreateMap<DepartmentServiceObject, UpdateDepartmentResponseDto>();
 
             this.CreateMap<DepartmentServiceObject, GetDepartmentResponseDto>();
+        }
+        private void CreateMapForMethods()
+        {
+            this.CreateMap<CreateMethodRequestDto, MethodServiceObject>();
+            this.CreateMap<MethodServiceObject, CreateMethodResponseDto>();
+
+            this.CreateMap<UpdateMethodRequestDto, MethodServiceObject>();
+            this.CreateMap<MethodServiceObject, UpdateMethodResponseDto>();
+
+            this.CreateMap<MethodServiceObject, GetMethodResponseDto>();
+        }
+
+        private void CreateMapForLookup()
+        {
+            this.CreateMap<LookupEntity, LookupServiceObject>();
+            this.CreateMap<LookupServiceObject, LookupResponseDto>();
+        }
+
+        private void CreateMapForIndividualMaster()
+        {
+            this.CreateMap<IndividualTestServiceObject, IndividualTestResponseDto>();
+            this.CreateMap<IndividualTestEntity, IndividualTestServiceObject>();
+            this.CreateMap<IndividualTestServiceObject, IndividualTestEntity>();
+            this.CreateMap<IndividualTestResponseDto, IndividualTestServiceObject>();
+        }
+
+        private void CreateMapForEquipments()
+        {
+            this.CreateMap<EquipmentRequestDto, EquipmentServiceObject>();
+            this.CreateMap<EquipmentServiceObject, EquipmentResponseDto>();
+
+            this.CreateMap<EquipmentRequestDto, EquipmentServiceObject>();
+            this.CreateMap<EquipmentServiceObject, EquipmentResponseDto>();
+
+            this.CreateMap<EquipmentServiceObject, EquipmentResponseDto>();
+
+            this.CreateMap<EquipmentServiceObject, EquipmentEntity>();
+            this.CreateMap<EquipmentEntity, EquipmentServiceObject>();
         }
 
         private void CreateMapForSampleTypes()

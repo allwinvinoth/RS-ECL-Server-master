@@ -31,6 +31,12 @@ namespace LIS.Services.Services
             var serviceResult = await _departmentRepository.GetDepartmentsByBranchIdAsync(branchId, token);
             return _mapper.Map<IEnumerable<DepartmentServiceObject>>(serviceResult);
         }
+
+        public async Task<IEnumerable<DepartmentServiceObject>> GetAll(CancellationToken token)
+        {
+            var serviceResult = await _departmentRepository.GetAll(token);
+            return _mapper.Map<IEnumerable<DepartmentServiceObject>>(serviceResult);
+        }
         public async Task<DepartmentServiceObject> UpdateDepartmentAsync(DepartmentServiceObject departmentServiceObject, CancellationToken token)
         {
             var departmentEntity = _mapper.Map<DepartmentEntity>(departmentServiceObject);
